@@ -9,62 +9,71 @@ import numpy as np
 import pandas as pd
 import pickle
 import streamlit as st
+import os
 
-# loading the saved model
-loaded_model = pickle.load(open("C:/Users/Emmanuel/OneDrive/Desktop/Deployimng machine learning model/trained_model.sav", "rb"))
+# Get current directory (works both locally and online)
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "trained_model.sav")
 
-# Creating a function for prediction
+# Load the saved model
+with open(model_path, "rb") as file:
+    loaded_model = pickle.load(file)
 
+
+# Function for prediction
 def diabetes_prediction(input_data):
-    feature_names = ["Pregnancies","Glucose","BloodPressure","SkinThickness",
-                     "Insulin","BMI","DiabetesPedigreeFunction","Age"]
-
+    feature_names = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness",
+                     "Insulin", "BMI", "DiabetesPedigreeFunction", "Age"]
 
     # Put into DataFrame with column names
     input_data = pd.DataFrame([list(map(float, input_data))], columns=feature_names)
 
-
     prediction = loaded_model.predict(input_data)
-    print(prediction)
 
-    if (prediction[0] == 0):
-      return"The person is not diabetic"
+    if prediction[0] == 0:
+        return "The person is not diabetic"
     else:
-      return"The person is diabetic"
-      
+        return "The person is diabetic"
+
+
 def main():
-    
-    # giving a title
-    st.title("Diabetes Prediction Web APP")
-    
-    # getting the input data from the user
-    
-    Pregnancies = st.text_input("Number of pregnancies")
-    Glucose = st.text_input("Glucose level")
-    BloodPressure = st.text_input("Blood pressure value")
-    SkinThickness = st.text_input("Skin Thickness value")
-    Insulin = st.text_input("Insulin level")
-    BMI = st.text_input("BMI value")
-    DiabetesPedigreeFunction = st.text_input("Diabetes Pedigree Function Value")
-    Age = st.text_input("Age of the person")
-    
-    
-    # code for prediction
+    # App title
+    st.title("🩺 Diabetes Prediction Web App")
+
+    st.markdown("Provide the patient's details below to predict the likelihood of diabetes.")
+    st.write("---")
+
+    # Create 3 columns
+    col1, col2, col3 = st.columns(3)
+
+    # Arrange inputs neatly across columns
+    with col1:
+        Pregnancies = st.text_input("Number of Pregnancies")
+        SkinThickness = st.text_input("Skin Thickness value")
+        BMI = st.text_input("BMI value")
+
+    with col2:
+        Glucose = st.text_input("Glucose Level")
+        Insulin = st.text_input("Insulin Level")
+        DiabetesPedigreeFunction = st.text_input("Diabetes Pedigree Function")
+
+    with col3:
+        BloodPressure = st.text_input("Blood Pressure Value")
+        Age = st.text_input("Age of the Person")
+
+    st.write("---")
+
+    # Prediction result
     diagnosis = ""
-    
-    # creating a button for prediction
-    
-    if st.button("Diabetes Test Result"):
-        diagnosis = diabetes_prediction([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age])
-        
+
+    if st.button("🔍 Get Diabetes Test Result"):
+        diagnosis = diabetes_prediction([
+            Pregnancies, Glucose, BloodPressure, SkinThickness,
+            Insulin, BMI, DiabetesPedigreeFunction, Age
+        ])
+
     st.success(diagnosis)
-    
-    
-    
+
+
 if __name__ == "__main__":
     main()
- 
-
-    
-    
-      
