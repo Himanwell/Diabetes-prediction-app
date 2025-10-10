@@ -24,9 +24,11 @@ with open(model_path, "rb") as file:
 def diabetes_prediction(input_data):
     feature_names = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness",
                      "Insulin", "BMI", "DiabetesPedigreeFunction", "Age"]
-
-    # Put into DataFrame with column names
-    input_data = pd.DataFrame([list(map(float, input_data))], columns=feature_names)
+    try:
+        # Convert inputs to float and put into DataFrame
+        input_data = pd.DataFrame([list(map(float, input_data))], columns=feature_names)
+    except ValueError:
+        return "⚠️ Please enter valid numerical values for all fields."
 
     prediction = loaded_model.predict(input_data)
 
@@ -39,8 +41,8 @@ def diabetes_prediction(input_data):
 def main():
     # App title
     st.title("🩺 Diabetes Prediction Web App")
-
     st.markdown("Provide the patient's details below to predict the likelihood of diabetes.")
+    st.warning("⚠️ Disclaimer: This app is for educational purposes only and not a substitute for professional medical advice.")
     st.write("---")
 
     # Create 3 columns
@@ -63,16 +65,16 @@ def main():
 
     st.write("---")
 
-    # Prediction result
-    diagnosis = ""
-
+    # Check for empty fields
     if st.button("🔍 Get Diabetes Test Result"):
-        diagnosis = diabetes_prediction([
-            Pregnancies, Glucose, BloodPressure, SkinThickness,
-            Insulin, BMI, DiabetesPedigreeFunction, Age
-        ])
-
-    st.success(diagnosis)
+        if "" in [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]:
+            st.warning("⚠️ Please fill in all fields before testing.")
+        else:
+            diagnosis = diabetes_prediction([
+                Pregnancies, Glucose, BloodPressure, SkinThickness,
+                Insulin, BMI, DiabetesPedigreeFunction, Age
+            ])
+            st.success(diagnosis)
 
 
 if __name__ == "__main__":
